@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: factorizator
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factorizator
+  namespace: factorizator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: factorizator
+  template:
+    metadata:
+      labels:
+        app: factorizator
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "5000"
+        prometheus.io/path: "/metrics"
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/worker: worker
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: factorizator
+          image: farazshaikh581/factorizator:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "128Mi"
+            limits:
+              cpu: "1000m"
+              memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: factorizator-service
+  namespace: factorizator
+spec:
+  type: NodePort
+  selector:
+    app: factorizator
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: factorizator
+  namespace: factorizator
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: factorizator
+  minReplicas: 1
+  maxReplicas: 100
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

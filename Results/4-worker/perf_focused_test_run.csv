@@ -1,0 +1,1 @@
+timestep,r_perf,r_cost,r_energy,latency,p95_latency,success_ratio,replicas,avg_cpu_percent,total_cpu_m,total_ram_mi,pod_power,hpa_target,reward_scalar,masterk8s_cpu,masterk8s_mem,worker11_cpu,worker11_mem,worker12_cpu,worker12_mem,worker13_cpu,worker13_mem,worker14_cpu,worker14_mem

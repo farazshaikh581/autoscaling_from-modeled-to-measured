@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+env/
+.venv/
+
+# Dataset (305 MB — download link in InvocationTraces)
+AzureFunctionsInvocationTraceForTwoWeeksJan2021.txt
+
+# Model checkpoints and training artifacts
+checkpoints/
+*.zip
+*.pkl
+
+# TensorBoard logs
+runs/
+tb/
+tb_test/
+tensorboard_logs/
+
+# Intermediate result directories
+results/runs/
+results/logs/
+results/test/
+results/tb/
+results/tb_test/
+results/checkpoints/
+
+# Logs
+*.log
+logs/
+port_forward.log
+debug_output.log
+
+# Misc
+*.save
+installed_packages.txt
+tmp/
+.DS_Store
+Thumbs.db
