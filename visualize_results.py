@@ -4,7 +4,7 @@ import seaborn as sns
 import numpy as np
 
 # --- Configuration ---
-SLA_LATENCY_S = 0.015
+SLA_LATENCY_S = 0.020
 RESULTS_FILE = 'test_results.csv'
 
 # --- Styling ---
