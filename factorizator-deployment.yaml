@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: factorizator
-        image: farazshaikh581/factorizator:fresh
+        image: 'image'
         # ---------------
         ports:
         - containerPort: 8080
