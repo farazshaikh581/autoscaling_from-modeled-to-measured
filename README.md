@@ -1,4 +1,4 @@
-# Trident: Pareto-Optimal Multi-Objective Reinforcement Learning for Energy-Efficient Kubernetes Autoscaling
+# From Modeled to Measured: Pareto-Optimal Multi-Objective Reinforcement Learning for Kubernetes Autoscaling
 
 A Kubernetes autoscaling system driven by multi-objective reinforcement learning. The agent dynamically adjusts the Horizontal Pod Autoscaler (HPA) CPU target to simultaneously optimise latency, replica cost, and energy consumption, replacing the static default (50 % CPU) with a policy that responds to live workload patterns.
 
